@@ -13,7 +13,7 @@
             margin: 0;
             padding: 20px;
             overflow: hidden;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 1s, color 1s;
         }
         h1 {
             text-align: center;
@@ -29,7 +29,7 @@
             padding: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             animation: fadeIn 0.5s ease;
-            transition: background-color 0.3s;
+            transition: background-color 1s;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -56,7 +56,7 @@
             background-color: #007bff;
             color: #fff;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
+            transition: background-color 1s, transform 1s;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         button:hover {
@@ -75,7 +75,7 @@
             padding: 10px;
             text-align: left;
             border-bottom: 2px solid rgba(0, 255, 153, 0.5);
-            transition: background-color 0.3s;
+            transition: background-color 1s;
         }
         th {
             background-color: #2a2a2a;
@@ -87,7 +87,7 @@
         tbody tr:hover {
             background-color: rgba(0, 255, 153, 0.3);
             transform: scale(1.02);
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 1s, transform 1s;
         }
         tbody tr:nth-child(odd) {
             background-color: rgba(255, 255, 255, 0.05);
@@ -116,7 +116,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: background-color 0.3s;
+            transition: background-color 1s;
         }
         nav {
             display: flex;
@@ -128,7 +128,7 @@
             text-decoration: none;
             padding: 10px 20px;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: background-color 1s;
         }
         nav a:hover {
             background-color: #007bff;
@@ -147,7 +147,7 @@
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 1s, box-shadow 1s;
             box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
         }
         .login_signup button:hover {
@@ -171,7 +171,9 @@
             background-color: #e0e0e0;
         }
         nav.light-mode a {
-            color: #007bff;
+            color: #f86060;
+            text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+            font-weight: bold;
         }
         nav.light-mode a:hover {
             background-color: #e6f7ff;
@@ -189,18 +191,12 @@
         tbody tr.light-mode:hover {
             background-color: rgba(0, 123, 255, 0.3);
         }
-        /* Toggle Button */
-        .toggle-button {
-            background: none;
-            border: none;
+        .toggle-btn {
+            background: none; /* Remove default background */
+            border: none; /* Remove border */
             cursor: pointer;
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            transition: transform 0.3s;
-        }
-        .toggle-button:hover {
-            transform: scale(1.05);
+            color: #00ccff; /* Change color */
+            font-size: 24px;
         }
     </style>
 </head>
@@ -217,9 +213,9 @@
             <div class="login_signup">
                 <button id="loginBtn">Log In</button>
                 <button id="signupBtn">Sign Up</button>
-                <button class="toggle-button" id="toggleMode">
-                    <svg id="toggleIcon" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 4.5C9.1 4.5 6.7 6 5.1 8.1C6.4 9.6 8.1 10.5 10 10.5C11.9 10.5 13.6 9.6 14.9 8.1C13.3 6 10.9 4.5 12 4.5ZM4.5 12C6 9.1 8.3 7 10.9 7C11.4 7 11.8 7.1 12.3 7.2C9.9 8.6 8 10.9 7.5 13.5H6.6C5.5 13.5 4.5 14.5 4.5 15.5V12ZM12 19.5C14.9 19.5 17.3 18.5 19.5 17C18.2 15.5 16.4 14.5 14.5 14.5C12.6 14.5 10.8 15.5 9.5 17C10.7 18.3 12.3 19.5 12 19.5ZM19.5 12C17.8 14 15.5 15 12.9 15C12.4 15 12 15 11.6 15.1C14 16.5 15.9 18.8 16.4 21.5H17.5C18.5 21.5 19.5 20.5 19.5 19.5V12Z"/>
+                <button class="toggle-btn" id="toggleMode">
+                    <svg id="modeIcon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/>
                     </svg>
                 </button>
             </div>
@@ -249,11 +245,11 @@
     <script>
         const leaderboard = document.getElementById('leaderboard');
         const leaderboardForm = document.getElementById('leaderboardForm');
-        const toggleButton = document.getElementById('toggleMode');
-        const toggleIcon = document.getElementById('toggleIcon');
         const body = document.body;
         const header = document.getElementById('header');
         const container = document.getElementById('container');
+        const toggleButton = document.getElementById('toggleMode');
+        const modeIcon = document.getElementById('modeIcon');
 
         leaderboardForm.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -299,28 +295,13 @@
 
         toggleButton.addEventListener('click', function() {
             body.classList.toggle('light-mode');
-            header.classList.toggle('light-mode');
             container.classList.toggle('light-mode');
-            const thElements = document.querySelectorAll('th');
-            thElements.forEach(th => th.classList.toggle('light-mode'));
-            const trElements = document.querySelectorAll('tbody tr');
-            trElements.forEach(tr => tr.classList.toggle('light-mode'));
-        
-            // Change SVG icon based on current mode
-            // if (body.classList.contains('light-mode')) {
-            //     toggleIcon.setAttribute('d', 'M12 4.5C9.1 4.5 6.7 6 5.1 8.1C6.4 9.6 8.1 10.5 10 10.5C11.9 10.5 13.6 9.6 14.9 8.1C13.3 6 10.9 4.5 12 4.5ZM4.5 12C6 9.1 8.3 7 10.9 7C11.4 7 11.8 7.1 12.3 7.2C9.9 8.6 8 10.9 7.5 13.5H6.6C5.5 13.5 4.5 14.5 4.5 15.5V12ZM12 19.5C14.9 19.5 17.3 18.5 19.5 17C18.2 15.5 16.4 14.5 14.5 14.5C12.6 14.5 10.8 15.5 9.5 17C10.7 18.3 12.3 19.5 12 19.5ZM19.5 12C17.8 14 15.5 15 12.9 15C12.4 15 12 15 11.6 15.1C14 16.5 15.9 18.8 16.4 21.5H17.5C18.5 21.5 19.5 20.5 19.5 19.5V12Z'); // Change to dark mode icon path
-            // } else {
-            //     toggleIcon.setAttribute('d', 'M12 4.5C9.1 4.5 6.7 6 5.1 8.1C6.4 9.6 8.1 10.5 10 10.5C11.9 10.5 13.6 9.6 14.9 8.1C13.3 6 10.9 4.5 12 4.5ZM4.5 12C6 9.1 8.3 7 10.9 7C11.4 7 11.8 7.1 12.3 7.2C9.9 8.6 8 10.9 7.5 13.5H6.6C5.5 13.5 4.5 14.5 4.5 15.5V12ZM12 19.5C14.9 19.5 17.3 18.5 19.5 17C18.2 15.5 16.4 14.5 14.5 14.5C12.6 14.5 10.8 15.5 9.5 17C10.7 18.3 12.3 19.5 12 19.5ZM19.5 12C17.8 14 15.5 15 12.9 15C12.4 15 12 15 11.6 15.1C14 16.5 15.9 18.8 16.4 21.5H17.5C18.5 21.5 19.5 20.5 19.5 19.5V12Z'); // Change to light mode icon path
-            // }
-        });
-        document.getElementById('toggleBtn').addEventListener('click', function() {
-            document.body.classList.toggle('light-mode'); // Toggle class for light mode
-            const lightIcon = document.getElementById('lightIcon');
-            if (document.body.classList.contains('light-mode')) {
-                lightIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>`;
-            } else {
-                lightIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/></svg>`;
-            }
+            header.classList.toggle('light-mode');
+            const isLightMode = body.classList.contains('light-mode');
+
+            modeIcon.innerHTML = isLightMode ? 
+                '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/></svg>' :
+                '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>';
         });
 
         document.getElementById('loginBtn').addEventListener('click', function() {
