@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page - Dark Mode</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            transition: background-color 0.3s, color 0.3s;
+            max-height: 400px; /* Adjust the height as needed */
+            overflow-y: auto;  /* Enables vertical scrolling */
+            
+        }
+        h1 {
+            text-align: center;
+            color: #00ff99;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            margin-bottom: 30px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            background-color: #1a1a1a; /* Dark mode background */
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.5s ease;
+            transition: background-color 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        form {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            border: none;
+            margin: 5px;
+            border-radius: 5px;
+            width: 45%;
+            font-size: 16px;
+            box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.1);
+        }
+        button {
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        /*  */
+        img {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        header {
+            background-color: #1a1a1a;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: #00ccff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #007bff;
+        }   
+        .login_signup {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        .login_signup button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+        .login_signup button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.5);
+        }
+        .login_signup button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+        /* Light Mode Styles */
+        body.light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .container.light-mode {
+            background-color: #ffffff; /* Light mode background */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        header.light-mode {
+            background-color: #e0e0e0;
+        }
+        nav.light-mode a {
+            color: #007bff;
+        }
+        nav.light-mode a:hover {
+            background-color: #e6f7ff;
+        }
+        /*  */
+        /* Toggle Button */
+        .toggle-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+        .toggle-button:hover {
+            transform: scale(1.05);
+        }
+   
+
+        /* Container and Quiz Styles */
+        .container {
+            text-align: center;
+            outline: #007bff;
+            outline-color: #007bff;
+            /* width: 10000px; */
+            background-color: #1e1e1e; /* Slightly lighter background for content */
+            padding: 0px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Darker shadow */
+            max-width: 1200px;
+            /* margin: 40px auto; */
+            margin-top:10px;
+
+            
+        }
+        .question {
+            /* text-align: left; */
+            margin-top: 20px;
+            width: 1000px;
+            margin-bottom: 20px;
+            margin-left: 0px;
+            padding: 100px;
+            font-size: 25px;
+        }
+        .response {
+            /* font-size: 100px; */
+            margin-top: 10px;
+            font-weight: bold;
+            color: #ffffff; /* Keep text white */
+        }
+        .solution {
+            margin-top: 10px;
+            color: #00bcd4; /* Highlighted solution in blue */
+            font-style: italic;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Button Styles */
+        button {
+            font-size: 20px;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            background-color: #333; /* Dark button */
+            color: #ffffff; /* Light text on button */
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #575757; /* Slightly lighter hover */
+        }
+        button.correct {
+            background-color: #4caf50; /* Green for correct answer */
+            color: #ffffff;
+        }
+        button.incorrect {
+            background-color: #f44336; /* Red for incorrect answer */
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <nav>
+            <a href="jee_prep.html">Home</a>
+            <a href="exam.html">Exam Practice</a>
+            <a href="important_chap.html">Important Chapters</a>
+            <a href="important_books.html">Important Books</a>
+            <a href="relevency_meter.html">Relevancy Meter</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="timer.html">Timer</a>
+            <div class="login_signup">
+                <button id="loginBtn">Log In</button>
+                <button id="signupBtn">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container" id="quiz">
+        
+
+        <div class="question">
+            <p style="color: rgb(5, 174, 42); font-size: 20px; text-align: left;">
+                Relevancy: 93%
+            </p>
+            <p>1. The de-Broglie wavelength associated with a particle of mass m and Energy E is h/ \( \sqrt(2mE) \). The dimensional formula for Planck's constant is :</p>
+            <ul>
+                <li><button onclick="showResponse(1, 'Correct!', 'λ = h/ \( \sqrt(2mE) \) or E = hν. Thus, dimensional formula for Planck\'s constant is [M L^{2} T^{-1}]', this, true)">A. [\(M L^{2} T^{-1}\)]</button></li>
+                <li><button onclick="showResponse(1, 'Incorrect. Try again!', 'λ = h/ \( \sqrt(2mE) \) or E = hν. Thus, dimensional formula for Planck\'s constant is [M L^{2} T^{-1}]', this, false)">B. [\(M L^{-1} T^{-2}\)]</button></li>
+                <li><button onclick="showResponse(1, 'Incorrect. Try again!', 'λ = h/ \( \sqrt(2mE) \) or E = hν. Thus, dimensional formula for Planck\'s constant is [M L^{2} T^{-1}]', this, false)">C. [\(M L T^{2}\)]</button></li>
+                <li><button onclick="showResponse(1, 'Incorrect. Try again!', 'λ = h/ \( \sqrt(2mE) \) or E = hν. Thus, dimensional formula for Planck\'s constant is [M L^{2} T^{-1}]', this, false)">D. [\(M^{2} L^{2} T^{2}\)]</button></li>
+            </ul>
+            <p class="response" id="response-1"></p>
+            <p class="solution" id="solution-1"></p>
+        </div>
+
+        
+    </div>
+
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>
+        function showResponse(questionNumber, message, solution, element, isCorrect) {
+            const response = document.getElementById('response-' + questionNumber);
+            const solutionText = document.getElementById('solution-' + questionNumber);
+
+            response.textContent = message;
+            solutionText.textContent = solution;
+
+            if (isCorrect) {
+                element.classList.add('correct');
+            } else {
+                element.classList.add('incorrect');
+            }
+
+            // Disable all buttons for this question to prevent further clicks
+            const buttons = element.parentElement.parentElement.querySelectorAll('button');
+            buttons.forEach(button => button.disabled = true);
+        }
+    </script>
+
+</body>
+</html>
