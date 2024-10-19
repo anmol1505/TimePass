@@ -73,6 +73,57 @@ def logout():
     flash('You have been logged out.', 'info')
     return redirect(url_for('login'))
 
+# New routes for additional HTML files
+@app.route('/physics_chap')
+@login_required
+def physics_chap():
+    return render_template('physics_chap.html')
+
+@app.route('/physics_book')
+@login_required
+def physics_book():
+    return render_template('physics_book.html')
+
+@app.route('/mathematics_chap')
+@login_required
+def mathematics_chap():
+    return render_template('mathematics_chap.html')
+
+@app.route('/mathematics_book')
+@login_required
+def mathematics_book():
+    return render_template('mathematics_book.html')
+
+@app.route('/leaderboard')
+@login_required
+def leaderboard():
+    return render_template('leaderboard.html')
+
+@app.route('/jee_prep')
+@login_required
+def jee_prep():
+    return render_template('jee_prep.html')
+
+@app.route('/important_chap')
+@login_required
+def important_chap():
+    return render_template('important_chap.html')
+
+@app.route('/important_book')
+@login_required
+def important_book():
+    return render_template('important_book.html')
+
+@app.route('/chemistry_chap')
+@login_required
+def chemistry_chap():
+    return render_template('chemistry_chap.html')
+
+@app.route('/chemistry_book')
+@login_required
+def chemistry_book():
+    return render_template('chemistry_book.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # Creates database tables
