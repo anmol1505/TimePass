@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            color: #ff0000;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7),
+                        0 0 25px #ff0000,
+                        0 0 5px #00ff99;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            font-family: 'Roboto', sans-serif;
+            color: #232121;
+            margin: 0;
+            padding: 0;
+            perspective: 1000px;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #1a1a1a;
+            background: 
+                linear-gradient(135deg, rgba(42, 42, 42, 0.7), rgba(59, 59, 59, 0.7)),
+                url('https://c4.wallpaperflare.com/wallpaper/122/576/19/science-albert-einstein-formula-mathematics-wallpaper-thumb.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding: 150px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+            color: #fff;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+        .timer {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            padding: 100px;
+            background: 
+                linear-gradient(135deg, rgba(42, 42, 42, 0.7), rgba(59, 59, 59, 0.7)),
+                /* url('https://media.istockphoto.com/id/1346521707/vector/stopwatch-timer-icon-vector-illustration-design-editable-resizable-eps-10.jpg?s=612x612&w=0&k=20&c=UERXWvoH82Dh547rQfOdd70QNcu8p3Jz0mV26F0XEmY=') */;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), -6px -6px 12px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .timer:hover {
+            transform: scale(1.05);
+        }
+        button {
+            margin: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        #start {
+            background-color: #28a745;
+            color: white;
+        }
+        #stop {
+            background-color: #dc3545;
+            color: white;
+        }
+        #reset {
+            background-color: #007bff;
+            color: white;
+        }
+        button:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+        header {
+            background-color: #1a1a1a;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        nav a {
+            color: #00ccff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #007bff;
+        }
+        .login_signup {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        .login_signup button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+        .login_signup button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.5);
+        }
+        .login_signup button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="jee_prep.html">Home</a>
+            <a href="exam.html">Exam Practice</a>
+            <a href="important_chap.html">Important Chapters</a>
+            <a href="important_books.html">Important Books</a>
+            <a href="relevency_meter.html">Relevancy Meter</a>
+            <a href="leaderboard.html">LeaderBoard</a>
+            <a href="timer.html">Timer</a>
+            <div class="login_signup">
+                <button id="loginBtn">Log In</button>
+                <button id="signupBtn">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+    <h1>Let's Measure the Study That We Do</h1>
+    <div class="container">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+        <div class="timer">00:00:00</div>
+        <script>
+            let timerInterval;
+            let seconds = localStorage.getItem('seconds') ? parseInt(localStorage.getItem('seconds')) : 0;
+
+            function updateTimerDisplay() {
+                const timerDisplay = document.querySelector('.timer');
+                const hours = Math.floor(seconds / 3600);
+                const minutes = Math.floor((seconds % 3600) / 60);
+                const secs = seconds % 60;
+                timerDisplay.textContent = 
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }
+
+            function startTimer() {
+                if (!timerInterval) {
+                    timerInterval = setInterval(() => {
+                        seconds++;
+                        localStorage.setItem('seconds', seconds); // Store seconds in localStorage
+                        updateTimerDisplay();
+                    }, 1000);
+                }
+            }
+
+            function stopTimer() {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+
+            function resetTimer() {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                seconds = 0;
+                localStorage.setItem('seconds', seconds); // Reset localStorage
+                updateTimerDisplay();
+            }
+
+            document.getElementById('start').addEventListener('click', startTimer);
+            document.getElementById('stop').addEventListener('click', stopTimer);
+            document.getElementById('reset').addEventListener('click', resetTimer);
+            document.getElementById('loginBtn').addEventListener('click', function() {
+                window.location.href = 'login.html';
+            });
+
+            document.getElementById('signupBtn').addEventListener('click', function() {
+                window.location.href = 'signup.html';
+            });
+
+            // Initialize the timer display on page load
+            updateTimerDisplay();
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Prep - Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .signup-container {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            color: #00ccff;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            color: #28a745; /* Green for success */
+            margin-top: 10px;
+        }
+        .error {
+            color: #ff0000; /* Red for error */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button id="signupBtn">Sign Up</button>
+        <div class="message" id="successMessage"></div>
+        <div class="error" id="errorMessage"></div>
+    </div>
+
+    <script>
+        document.getElementById('signupBtn').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Simple validation
+            if (username && password) {
+                // Dummy sign-up logic (store in localStorage for demonstration)
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+
+                successMessage.textContent = 'Sign up successful! Redirecting...';
+                errorMessage.textContent = '';
+                
+                // Redirect after a short delay
+                setTimeout(() => {
+                    window.location.href = 'jee_prep.html'; // Redirect to the main page
+                }, 2000);
+            } else {
+                errorMessage.textContent = 'Please fill in all fields!';
+                successMessage.textContent = '';
+            }
+        });
+    </script>
+</body>
+</html>

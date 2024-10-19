@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Subjects</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .button {   
+            border: none;
+            border-radius: 20px;
+            width: 100%; /* Set width to 100% */
+            max-width: 600px; /* Limit max width */
+            height: 200px;
+            font-size: 80px;
+            font-weight: bold;
+            color: #ffd900;
+            text-align: center;
+            cursor: pointer;
+            margin: 20px 0; /* Adjust margin for vertical spacing */
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 255, 0, 0.5);
+        }
+
+        .physics {
+            /* background-color: black; */
+            color: #ff8c00;
+            text-shadow: 5px 5px 0 black;
+            background-image: url('https://t3.ftcdn.net/jpg/01/97/49/40/360_F_197494079_U9dM6IxEBzdUmrhe3DFxyi8L0aFGtQME.jpg'); /* Replace with your image */
+        }
+
+        .chemistry {
+            color: white;
+            text-shadow: 5px 5px 0 black;
+            background-image: url('https://www.thoughtco.com/thmb/6MsMmUK27akFhb8i89kj95J5iko=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-545286316-433dd345105e4c6ebe4cdd8d2317fdaa.jpg'); /* Replace with your image */
+        }
+
+        .maths {
+            color: #00ff44;
+            text-shadow: 5px 5px 0 black;
+            background-image: url('https://imgs.search.brave.com/CZAIxexXP0OvnQUGLM-mJOePr5EVa-LqcfOYXAiufPQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzU4LzcyLzUz/LzM2MF9GXzI1ODcy/NTMxOV9tSlNzVXpW/SXZaQzJJMEdhNVk3/ajhaNnN5NkxFM0NZ/Zy5qcGc'); /* Replace with your image */
+        }
+
+        header {
+            background-color: #1a1a1a;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav a {
+            color: #00ccff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #007bff;
+        }
+
+        .login_signup button {
+            padding: 10px 20px;
+            margin: 0 10px; /* Space between buttons */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .login_signup button:hover {
+            transform: translateY(-3px); /* Slight lift effect */
+            box-shadow: 0 10px 20px rgba(0, 123, 255, 0.5);
+        }
+
+        .login_signup button:active {
+            transform: translateY(0); /* Reset effect when clicked */
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="jee_prep.html">Home</a>
+            <!-- <a href="jee_prep.html">JEE Prep</a> -->
+            <a href="exam.html">Exam Practice</a>
+            <a href="important_chap.html">Important Chapters</a>
+            <a href="important_books.html">Important Books</a>
+            <a href="relevency_meter.html">Relevancy Meter</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="timer.html">Timer</a>
+            <div class="login_signup">
+                <button id="loginBtn">Log In</button>
+                <button id="signupBtn">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+    <button class="button physics">PHYSICS</button>
+    <button class="button chemistry">CHEMISTRY</button>
+    <button class="button maths">MATHEMATICS</button>
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            window.location.href = 'login.html'; // Redirect to login page
+        });
+
+        document.getElementById('signupBtn').addEventListener('click', function() {
+            window.location.href = 'signup.html'; // Redirect to signup page
+        });
+        document.querySelector('.physics').addEventListener('click', function() {
+        window.location.href = 'physics_chap.html'; // Link to your physics page
+        });
+
+        document.querySelector('.chemistry').addEventListener('click', function() {
+            window.location.href = 'chemistry_chap.html'; // Link to your chemistry page
+        });
+
+        document.querySelector('.maths').addEventListener('click', function() {
+            window.location.href = 'mathematics_chap.html'; // Link to your mathematics page
+        });
+
+    </script>
+</body>
+</html>
